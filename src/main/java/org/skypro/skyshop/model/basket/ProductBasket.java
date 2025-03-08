@@ -1,25 +1,27 @@
 package org.skypro.skyshop.model.basket;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
-import java.util.UUID;
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
+import java.util.*;
+
+@SessionScope
+@Component
 public class ProductBasket {
-    private final Map<UUID, Integer> basket;
+    private final Map<UUID, Integer> productBasket;
 
-    public ProductBasket(Map<UUID, Integer> basket) {
-        this.basket = basket;
+    public ProductBasket() {
+        this.productBasket = new HashMap<>();
     }
 
     public void addProduct(UUID productId){
-        if(basket.containsKey(productId)){
-            basket.put(productId, basket.get(productId) + 1);
+        if(productBasket.containsKey(productId)){
+            productBasket.put(productId, productBasket.get(productId) + 1);
         }else {
-            basket.put(productId,1);
+            productBasket.put(productId,1);
         }
     }
     public Map<UUID, Integer> getBasket(){
-        return Collections.unmodifiableMap(basket);
+        return Collections.unmodifiableMap(productBasket);
     }
 }
