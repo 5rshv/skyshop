@@ -10,7 +10,7 @@ private final double total;
     public UserBasket(ArrayList<BasketItem> basket) {
         this.basket = basket;
         this.total = basket.stream()
-                .mapToDouble(item -> item.getProduct().getPriceProduct() * item.getQuantity())
+                .mapToDouble(item -> item.getProduct().getPriceProduct() * item.getCount())
                 .sum();
     }
 
