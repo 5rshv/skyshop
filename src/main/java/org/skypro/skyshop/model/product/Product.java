@@ -23,6 +23,8 @@ public abstract class Product implements Searchable {
     }
 
     public abstract double getPriceProduct();
+    public abstract String toString();
+
 
     @Override
     public boolean equals(Object o) {
@@ -50,4 +52,5 @@ public abstract class Product implements Searchable {
         return getNameProduct() + " " + getTypeContent();
     }
 
+    public abstract boolean isSpecial();
 }

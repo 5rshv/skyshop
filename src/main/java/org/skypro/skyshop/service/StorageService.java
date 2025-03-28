@@ -9,8 +9,6 @@ import org.skypro.skyshop.model.search.Searchable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class StorageService {
@@ -38,8 +36,8 @@ public class StorageService {
 
 
     private void testData(){
-        Product products1 = new SimpleProduct("Стул", 10, UUID.randomUUID());
-        Product products2 = new SimpleProduct("Стул", 10000, UUID.randomUUID());
+        Product products1 = new SimpleProduct("Стул", UUID.randomUUID(), 1000);
+        Product products2 = new SimpleProduct("Стул", UUID.randomUUID(), 2000);
         Product products3 = new FixPriceProduct("Кресло", UUID.randomUUID());
         Product products4 = new DiscountedProduct("Пуфик", 1000, 10,  UUID.randomUUID());
         Product products5 = new DiscountedProduct("Кровать", 35000, 50, UUID.randomUUID());

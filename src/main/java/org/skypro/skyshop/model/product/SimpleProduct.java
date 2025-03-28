@@ -5,7 +5,7 @@ import java.util.UUID;
 public class SimpleProduct extends Product {
     private double priceProduct;
 
-    public SimpleProduct(String nameProduct, double priceProduct, UUID id) {
+    public SimpleProduct(String nameProduct,  UUID id,double priceProduct) {
 
         super(nameProduct, id);
         if (priceProduct <= 0){
@@ -14,13 +14,16 @@ public class SimpleProduct extends Product {
         this.priceProduct = priceProduct;
     }
 
-    @Override
     public double getPriceProduct() {
         return priceProduct;
     }
 
     @Override
     public String toString() {
-        return nameProduct + " : " + priceProduct;
+        return getNameProduct() + " : " + getPriceProduct();
+    }
+    @Override
+    public boolean isSpecial(){
+        return false;
     }
 }

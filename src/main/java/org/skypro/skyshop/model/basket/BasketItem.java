@@ -4,18 +4,18 @@ import org.skypro.skyshop.model.product.Product;
 
 public final class BasketItem {
     private final Product product;
-    private final double quantity;
+    private final double count;
 
     public BasketItem(Product product, int quantity) {
         this.product = product;
-        this.quantity = quantity;
+        this.count = quantity;
     }
 
     public Product getProduct() {
         return product;
     }
 
-    public double getQuantity() {
-        return quantity;
+    public double getCount() {
+        return count;
     }
 }
