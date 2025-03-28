@@ -10,8 +10,8 @@ import java.util.*;
 public class ProductBasket {
     private final Map<UUID, Integer> productBasket;
 
-    public ProductBasket(Map<UUID, Integer> productBasket) {
-        this.productBasket = productBasket;
+    public ProductBasket() {
+        this.productBasket = new HashMap<>();
     }
 
     public void addProduct(UUID productId){

@@ -39,10 +39,7 @@ public class SearchServiceTest {
 
     @Test
     public void testSearchWhenPatternNotFound() {
-        Map<UUID, Searchable> searchables = Map.of(
-                UUID.randomUUID(), new SimpleProduct("Test1", UUID.randomUUID(), 100),
-                UUID.randomUUID(), new Article("Test2", "Content", UUID.randomUUID())
-        );
+        Map<UUID, Searchable> searchables = Map.of(UUID.randomUUID(), new SimpleProduct("Test1", UUID.randomUUID(), 100), UUID.randomUUID(), new Article("Test2", "Content", UUID.randomUUID()));
         when(storageService.getSearchables()).thenReturn(searchables);
 
         Map<UUID, SearchResult> results = searchService.search("NoMatch");
@@ -53,10 +50,7 @@ public class SearchServiceTest {
     @Test
     void testSearchWhenMatchingObjectsExist() {
         UUID matchingId = UUID.randomUUID();
-        Map<UUID, Searchable> searchables = Map.of(
-                matchingId, new SimpleProduct("Match", matchingId, 100),
-                UUID.randomUUID(), new Article("Other", "Content", UUID.randomUUID())
-        );
+        Map<UUID, Searchable> searchables = Map.of(matchingId, new SimpleProduct("Match", matchingId, 100), UUID.randomUUID(), new Article("Other", "Content", UUID.randomUUID()));
         when(storageService.getSearchables()).thenReturn(searchables);
 
         Map<UUID, SearchResult> results = searchService.search("Match");

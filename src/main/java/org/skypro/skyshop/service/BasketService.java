@@ -16,10 +16,10 @@ import java.util.*;
 @Service
 @SessionScope
 public class BasketService {
-    private final Map<UUID, Integer> productBasket;
+    private final ProductBasket productBasket;
     private final StorageService storageService;
 
-    public BasketService(Map<UUID, Integer> productBasket, StorageService storageService) {
+    public BasketService(ProductBasket productBasket, StorageService storageService) {
         this.productBasket = productBasket;
         this.storageService = storageService;
     }
@@ -28,13 +28,13 @@ public class BasketService {
 
         Optional<Product> product = storageService.getProductById(id);
          if(product.isEmpty()) throw new NoSuchProductException();
-        productBasket.merge(id, 1, Integer::sum);
+        productBasket.getBasket().merge(id, 1, Integer::sum);
     }
 
     public UserBasket getUserBasket(){
         ArrayList<BasketItem> basketItems = new ArrayList<>();
 
-        for (Map.Entry<UUID, Integer> entry : productBasket.entrySet()) {
+        for (Map.Entry<UUID, Integer> entry : productBasket.getBasket().entrySet()) {
             UUID productId = entry.getKey();
             int count = entry.getValue();
 
